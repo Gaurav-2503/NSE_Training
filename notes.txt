@@ -1,0 +1,66 @@
+--- Server 
+
+	4 steps
+		socket();  - create a socket
+		bind(); - bind that socket to an ip and port
+ 		listen();  - listen for connections
+		accept();  -  accept a connection and then send/recv data
+		
+		
+Flow of Execution : 
+
+    - Server Initialization:
+        The server starts and initializes its socket, binds it to an address, and starts listening for incoming connections.
+
+    - Client Initialization:
+        The client initializes its socket and attempts to connect to the server’s address.
+
+    - Server Accepts Connection:
+        Once the client initiates a connection, the server accepts it, creating a new socket (client_socket) for communication with the client.
+
+    - Client Sends/Receives Data:
+        The server sends data to the connected client using the client_socket, while the client receives this data.
+
+    - Termination:
+        Both server and client close their sockets after the communication is done.
+        
+
+// Generic struct for sockets - defined in sys/socket.h
+
+		struct sockaddr{
+			sa_family_t sa_family;
+			char sa_data[14];
+		};
+		
+		// defined in netinet/in.h - for ipv4 sockets
+			struct sockaddr_in {
+				sa_family_t sin_family;   // domain
+				in_port_t sin_port;     // 16-bit field 
+				struct in_addr sin_addr;   // 32-bit ipv4 address
+				char sin_zero[8];  	// pad the size of this struct to original struct 
+			};
+
+			struct in_addr {
+				in_addr_t s_addr; // in_addr is typedef for uint32_t
+			};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
